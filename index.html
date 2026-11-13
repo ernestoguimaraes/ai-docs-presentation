@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do documento à decisão · Demo Microsoft Foundry</title>
+<meta name="description" content="Demonstração animada de um agente no Microsoft Foundry percorrendo um processo de negócio de ponta a ponta.">
+<style>
+html,body{margin:0;padding:0;background:#02060f}
+body{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 12px;box-sizing:border-box}
+.page{width:100%;max-width:1180px}
+.foot{margin-top:12px;text-align:center;font:12px system-ui,sans-serif;color:#64748b}
+@media(prefers-color-scheme:light){html,body{background:#e2e8f0}}
+</style>
+</head>
+<body>
+<div class="page">
+<div id='fd2' tabindex='0'>
+<style>
+#fd2{--ink:#eef4ff;--mut:#9fb0cc;--line:rgba(125,211,252,.25);--acc:#38bdf8;--dur:1.8s;--dwell:5600ms;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#050b18;border-radius:20px;overflow:hidden;outline:none;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+#fd2 *{box-sizing:border-box}
+#fd2 .hdr{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(90deg,#071229,#140a32)}
+#fd2 .hdr h1{margin:0;font-size:16px}#fd2 .hdr p{margin:2px 0 0;font-size:11px;color:var(--mut)}
+#fd2 .ctl{display:flex;gap:6px}
+#fd2 .b{border:1px solid var(--line);background:rgba(15,25,50,.9);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:border-color .2s,transform .2s}
+#fd2 .b:hover{border-color:var(--acc);transform:translateY(-1px)}#fd2 .b:focus-visible,#fd2 .tb:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+#fd2 a.b{text-decoration:none;display:inline-flex;align-items:center}
+#fd2 .b.dl{background:linear-gradient(135deg,#059669,#0d9488);border-color:transparent;color:#fff}
+#fd2 .b.pri{background:linear-gradient(135deg,#0284c7,#7c3aed);border-color:transparent;color:#fff;min-width:108px}
+#fd2 .vp{position:relative;height:clamp(400px,52vw,560px);overflow:hidden;color:#eef4ff;background:radial-gradient(ellipse at 50% 125%,#1e3a8a 0,#0b1530 45%,#050b18 80%)}
+#fd2 .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 80px 120px,#bae6fd,transparent),radial-gradient(1.5px 1.5px at 150px 60px,#fff,transparent);background-size:200px 160px;opacity:.5;animation:fdtw 5s ease-in-out infinite alternate}
+@keyframes fdtw{to{opacity:.2}}
+#fd2 .par{position:absolute;left:0;bottom:60px;width:300%;height:230px;transition:transform var(--dur) cubic-bezier(.65,0,.35,1)}
+#fd2 .bld{position:absolute;bottom:0;background:linear-gradient(#16264d,#0c1733);border-radius:3px 3px 0 0}
+#fd2 .bld::after{content:'';position:absolute;inset:8px 6px;background-image:radial-gradient(circle,rgba(253,224,71,.6) 1px,transparent 1.6px);background-size:9px 12px;opacity:.45}
+#fd2 .cam{position:absolute;inset:0;transform:scale(1.06);transform-origin:50% 72%}
+#fd2 .cam.dolly{animation:fddolly var(--dur) cubic-bezier(.65,0,.35,1)}
+@keyframes fddolly{0%{transform:scale(1.06)}45%{transform:scale(.84) translateY(-8px) rotate(-.6deg)}100%{transform:scale(1.06)}}
+#fd2 .world{position:absolute;left:0;top:0;bottom:0;width:700%;transition:transform var(--dur) cubic-bezier(.65,0,.35,1)}
+#fd2 .floor{position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(#1a2c57,#0a1430);border-top:1px solid rgba(125,211,252,.35)}
+#fd2 .floor::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% 40%,rgba(255,255,255,.12) 3px,transparent 3.5px);background-size:16px 16px}
+#fd2 .track{position:absolute;left:0;right:0;bottom:30px;height:4px;background:rgba(125,211,252,.12)}
+#fd2 .fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#a78bfa,#34d399,#38bdf8);background-size:200% 100%;box-shadow:0 0 12px #38bdf8;transition:width var(--dur) cubic-bezier(.65,0,.35,1);animation:fdflow 2.5s linear infinite}
+@keyframes fdflow{to{background-position:-200% 0}}
+#fd2 .st{position:absolute;top:0;bottom:0;width:calc(100%/7)}
+#fd2 .glow{position:absolute;left:50%;bottom:40px;width:520px;height:340px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 70%,var(--c),transparent 65%);opacity:.14;transition:opacity 1s}
+#fd2 .st.on .glow{opacity:.42}
+#fd2 .num{position:absolute;left:50%;top:36px;transform:translateX(-50%);font-size:150px;font-weight:900;color:rgba(255,255,255,.04);line-height:1}
+#fd2 .pad{position:absolute;left:50%;bottom:20px;width:130px;height:22px;transform:translateX(-50%);border-radius:50%;border:2px solid var(--c);opacity:.25;box-shadow:0 0 18px var(--c);transition:opacity .8s}
+#fd2 .st.on .pad{opacity:1}
+#fd2 .set{position:absolute;left:50%;bottom:64px;width:380px;height:290px;transform:translateX(-50%);transform-origin:50% 100%}
+#fd2 .holo{position:absolute;border:1px solid rgba(125,211,252,.6);background:linear-gradient(160deg,rgba(56,189,248,.2),rgba(124,58,237,.14));border-radius:12px;padding:9px 10px;font-size:10.5px;line-height:1.45;color:#e0f2fe;box-shadow:0 0 22px rgba(56,189,248,.25);opacity:.22;transform:translateY(12px) scale(.92);transition:opacity .6s,transform .7s cubic-bezier(.2,.9,.3,1.3);overflow:hidden;z-index:4}
+#fd2 .holo::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(186,230,253,.18) 50%,transparent 55%);background-size:100% 220%;animation:fdscan 3s linear infinite;pointer-events:none}
+@keyframes fdscan{from{background-position:0 -120%}to{background-position:0 120%}}
+#fd2 .st.on .holo{opacity:1;transform:none}
+#fd2 .holo b{display:block;font-size:11px;margin-bottom:4px;color:#fff}
+#fd2 .seq>*{opacity:0;transform:translateX(-6px)}
+#fd2 .st.on .seq>*{animation:fdin .4s forwards}
+#fd2 .st.on .seq>*:nth-child(1){animation-delay:.5s}#fd2 .st.on .seq>*:nth-child(2){animation-delay:.85s}#fd2 .st.on .seq>*:nth-child(3){animation-delay:1.2s}#fd2 .st.on .seq>*:nth-child(4){animation-delay:1.55s}
+@keyframes fdin{to{opacity:1;transform:none}}
+#fd2 .tag{display:inline-block;margin-top:3px;padding:1px 7px;border-radius:999px;background:#ef4444;color:#fff;font-weight:700}
+#fd2 .warn{color:#fbbf24;font-weight:700}
+#fd2 .fw{position:absolute;width:44px;height:98px;transform-origin:50% 100%}
+#fd2 .fig{position:relative;width:44px;height:98px;--k:#f5c518;animation:fdbob 3s ease-in-out infinite}
+@keyframes fdbob{50%{transform:translateY(-3px)}}
+#fd2 .fig>i{position:absolute;display:block}
+#fd2 .fig .sh{left:-4px;bottom:-5px;width:52px;height:10px;border-radius:50%;background:rgba(0,0,0,.45)}
+#fd2 .fig .sd{left:15px;top:0;width:14px;height:6px;border-radius:3px 3px 1px 1px;background:var(--k)}
+#fd2 .fig .hd{left:9px;top:5px;width:26px;height:26px;border-radius:8px;background:radial-gradient(circle at 32% 28%,#fff3b0 0,var(--k) 45%,#c99400 100%)}
+#fd2 .fig .hd::before{content:'';position:absolute;left:7px;top:10px;width:3px;height:4px;border-radius:2px;background:#111;box-shadow:9px 0 0 #111}
+#fd2 .fig .hd::after{content:'';position:absolute;left:8px;top:15px;width:10px;height:5px;border:2px solid #111;border-top:0;border-radius:0 0 8px 8px}
+#fd2 .fig .hr{left:7px;top:1px;width:30px;height:13px;border-radius:12px 12px 4px 4px;background:var(--h)}
+#fd2 .fig .tr{left:4px;top:31px;width:36px;height:31px;background:linear-gradient(135deg,rgba(255,255,255,.28),transparent 45%),var(--t);clip-path:polygon(16% 0,84% 0,100% 100%,0 100%)}
+#fd2 .fig .aL,#fd2 .fig .aR{top:32px;width:9px;height:25px;border-radius:5px;background:var(--t);transform-origin:50% 3px;filter:brightness(.92)}
+#fd2 .fig .aL{left:0;transform:rotate(14deg)}#fd2 .fig .aR{left:35px;transform:rotate(-14deg)}
+#fd2 .fig .aL::after,#fd2 .fig .aR::after{content:'';position:absolute;left:-2px;bottom:-8px;width:13px;height:10px;border-radius:50%;border:3px solid var(--k);border-top-color:transparent}
+#fd2 .fig .hp{left:5px;top:62px;width:34px;height:6px;background:var(--l);filter:brightness(1.25)}
+#fd2 .fig .lL,#fd2 .fig .lR{top:67px;width:16px;height:31px;background:linear-gradient(90deg,rgba(255,255,255,.14),transparent),var(--l);border-radius:2px 2px 5px 5px;transform-origin:50% 0}
+#fd2 .fig .lL{left:5px}#fd2 .fig .lR{left:23px}
+#fd2 .fig.walk{animation:fdbw .38s ease-in-out infinite alternate}
+@keyframes fdbw{to{transform:translateY(-3px)}}
+#fd2 .walk .lL{animation:fdsw .38s ease-in-out infinite alternate}#fd2 .walk .lR{animation:fdsw .38s ease-in-out infinite alternate-reverse}
+#fd2 .walk .aL{animation:fdas .38s ease-in-out infinite alternate-reverse}#fd2 .walk .aR{animation:fdas .38s ease-in-out infinite alternate}
+@keyframes fdsw{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}
+@keyframes fdas{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
+#fd2 .fig.robot{--k:#e2e8f0}
+#fd2 .robot .hd{border-radius:9px;background:linear-gradient(#0b1220,#0b1220) center 8px/20px 13px no-repeat,linear-gradient(#f8fafc,#cbd5e1)}
+#fd2 .robot .hd::before{background:#38bdf8;width:4px;height:4px;left:8px;top:11px;box-shadow:7px 0 0 #38bdf8,0 0 6px #38bdf8}
+#fd2 .robot .hd::after{border-color:#38bdf8;width:8px;left:9px;top:15px;height:3px}
+#fd2 .robot .sd{left:20px;top:-7px;width:4px;height:12px;border-radius:2px;background:#cbd5e1}
+#fd2 .robot .sd::after{content:'';position:absolute;left:-3px;top:-7px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8}
+#fd2 .robot .tr::after{content:'';position:absolute;left:13px;top:9px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8;animation:fdcore 1.2s ease-in-out infinite alternate}
+@keyframes fdcore{to{background:#a78bfa;box-shadow:0 0 16px #a78bfa}}
+#fd2 .give .aR{transform:rotate(-75deg)}
+#fd2 .cheer .aL{transform:rotate(155deg)}#fd2 .cheer .aR{transform:rotate(-155deg)}
+#fd2 .st.on .cheer .aL{animation:fdwl .45s ease-in-out infinite alternate}#fd2 .st.on .cheer .aR{animation:fdwr .45s ease-in-out infinite alternate}
+@keyframes fdwl{from{transform:rotate(155deg)}to{transform:rotate(130deg)}}@keyframes fdwr{from{transform:rotate(-155deg)}to{transform:rotate(-130deg)}}
+#fd2 .st.on .rev .aL{animation:fdpress 3s forwards}
+@keyframes fdpress{0%,40%{transform:rotate(14deg)}60%,100%{transform:rotate(-50deg)}}
+#fd2 .agent{position:absolute;bottom:64px;width:44px;height:98px;margin-left:-22px;transform:scale(1.45);transform-origin:50% 100%;transition:left var(--dur) cubic-bezier(.65,0,.35,1);z-index:5}
+#fd2 .flip{transition:transform .35s}#fd2 .agent.left .flip{transform:scaleX(-1)}
+#fd2 .ring{position:absolute;left:50%;bottom:-7px;width:64px;height:14px;margin-left:-32px;border-radius:50%;border:2px solid rgba(56,189,248,.75);box-shadow:0 0 14px #38bdf8;animation:fdrp 1.8s ease-in-out infinite}
+@keyframes fdrp{50%{transform:scale(1.2);opacity:.5}}
+#fd2 .tok{position:absolute;left:50%;top:-38px;width:26px;height:26px;margin-left:-13px;border-radius:8px;display:grid;place-items:center;font-size:14px;background:rgba(14,30,60,.9);border:1px solid #7dd3fc;box-shadow:0 0 14px #38bdf8;animation:fdfl 2s ease-in-out infinite}
+@keyframes fdfl{50%{transform:translateY(-5px)}}
+#fd2 .desk{position:absolute;bottom:0;height:46px;border-radius:6px 6px 2px 2px;background:linear-gradient(#3b5998,#1e2f5c);box-shadow:inset 0 3px 0 rgba(255,255,255,.18),0 8px 18px rgba(0,0,0,.4);z-index:2}
+#fd2 .desk::before{content:'';position:absolute;left:4px;right:4px;top:-5px;height:5px;background-image:radial-gradient(ellipse at 50% 100%,#4a6bb0 3px,transparent 3.5px);background-size:12px 5px}
+#fd2 .flydoc{position:absolute;left:72px;bottom:70px;width:20px;height:26px;border-radius:3px;background:repeating-linear-gradient(#fff 0 4px,#cbd5e1 4px 5px);box-shadow:0 0 10px rgba(255,255,255,.6);opacity:0;z-index:3}
+#fd2 .st.on .flydoc{animation:fdfd 2.4s .3s ease-in-out infinite}
+@keyframes fdfd{0%{opacity:0;transform:translate(0,0)}12%{opacity:1}70%{opacity:1;transform:translate(95px,-40px) rotate(200deg) scale(.8)}100%{opacity:0;transform:translate(112px,-30px) rotate(260deg) scale(.3)}}
+#fd2 .orb{position:absolute;left:50%;bottom:212px;width:66px;height:66px;margin-left:-33px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e0f2fe,#38bdf8 35%,#6d28d9 78%);box-shadow:0 0 40px #38bdf8;opacity:.3;transition:opacity 1s}
+#fd2 .st.on .orb{opacity:1;animation:fdorb 1.6s ease-in-out infinite alternate}
+@keyframes fdorb{to{box-shadow:0 0 70px #a78bfa;transform:scale(1.06)}}
+#fd2 .orbit{position:absolute;left:50%;bottom:185px;width:120px;height:120px;margin-left:-60px;border:1px dashed rgba(125,211,252,.55);border-radius:50%;opacity:.3}
+#fd2 .st.on .orbit{opacity:1;animation:fdspin 5s linear infinite}
+@keyframes fdspin{to{transform:rotate(360deg)}}
+#fd2 .orbit i{position:absolute;width:12px;height:12px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24}
+#fd2 .scn{position:absolute;left:0;bottom:0;width:112px;height:84px;border-radius:10px 10px 3px 3px;background:linear-gradient(#64748b,#1e293b);box-shadow:inset 0 3px 0 rgba(255,255,255,.2),0 8px 18px rgba(0,0,0,.4)}
+#fd2 .scn i{position:absolute;left:12px;right:12px;top:10px;height:8px;border-radius:4px;background:#0b1220;box-shadow:inset 0 0 6px #f43f5e}
+#fd2 .scn::after{content:'SCAN';position:absolute;left:12px;bottom:10px;font:800 9px monospace;color:#94a3b8;letter-spacing:.2em}
+#fd2 .pp{position:absolute;left:44px;bottom:84px;width:22px;height:28px;border-radius:3px;background:repeating-linear-gradient(#fff 0 4px,#cbd5e1 4px 5px);box-shadow:0 0 8px rgba(255,255,255,.5);opacity:0;z-index:3}
+#fd2 .st.on .pp{animation:fdpp 2.4s ease-in-out infinite}
+@keyframes fdpp{0%{opacity:0;transform:translate(0,0)}12%{opacity:1}45%{opacity:1;transform:translate(70px,-30px) rotate(10deg)}55%{opacity:1;transform:translate(85px,-30px) scale(.8);background:#38bdf8;border-radius:7px;box-shadow:0 0 14px #38bdf8}100%{opacity:0;transform:translate(130px,-40px) scale(.4);background:#38bdf8}}
+#fd2 .laser{position:absolute;left:118px;bottom:84px;width:3px;height:90px;border-radius:2px;background:#f43f5e;box-shadow:0 0 12px #f43f5e;opacity:.25}
+#fd2 .st.on .laser{opacity:1;animation:fdlz .6s ease-in-out infinite alternate}
+@keyframes fdlz{to{box-shadow:0 0 26px #f43f5e;opacity:.6}}
+#fd2 .shelf{position:absolute;bottom:0;width:88px;height:196px;padding:6px 7px;border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#4a3320,#2d1f12);box-shadow:0 8px 18px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:5px}
+#fd2 .shelf .row{flex:1;display:flex;align-items:flex-end;gap:2px;border-bottom:3px solid #7a5431}
+#fd2 .shelf span{display:block;border-radius:2px 2px 0 0;box-shadow:inset -2px 0 0 rgba(0,0,0,.25)}
+#fd2 .st.on .shelf .hit{background:#fbbf24!important;box-shadow:0 0 14px #fbbf24;animation:fdhit .8s ease-in-out infinite alternate}
+@keyframes fdhit{to{transform:translateY(-8px)}}
+#fd2 .beam{position:absolute;left:190px;bottom:120px;width:150px;height:34px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(125,211,252,.55),rgba(125,211,252,0));clip-path:polygon(0 46%,100% 0,100% 100%,0 54%);opacity:0}
+#fd2 .st.on .beam{opacity:1;animation:fdb1 2.4s ease-in-out infinite alternate}
+#fd2 .st.on .beam.lf{animation-name:fdb2}
+@keyframes fdb1{from{transform:rotate(-28deg)}to{transform:rotate(18deg)}}@keyframes fdb2{from{transform:rotate(208deg)}to{transform:rotate(162deg)}}
+#fd2 .tw{position:absolute;bottom:0;width:58px;border-radius:6px 6px 2px 2px;background:linear-gradient(#3b4a63,#111827);border:1px solid rgba(125,211,252,.3);display:flex;flex-direction:column;align-items:center;padding-top:8px;font:800 10px system-ui,sans-serif;color:#bae6fd;box-shadow:0 8px 18px rgba(0,0,0,.4)}
+#fd2 .leds{display:flex;gap:3px;margin-top:6px}#fd2 .leds i{width:6px;height:6px;border-radius:50%;background:#334155}
+#fd2 .st.on .leds i{animation:fdled .7s infinite alternate}#fd2 .st.on .leds i:nth-child(2){animation-delay:.25s}#fd2 .st.on .leds i:nth-child(3){animation-delay:.5s}
+@keyframes fdled{to{background:#34d399;box-shadow:0 0 6px #34d399}}
+#fd2 .cb{position:absolute;bottom:80px;height:3px;background:rgba(125,211,252,.25);overflow:hidden;border-radius:2px;z-index:1}
+#fd2 .cb.l{left:58px;width:92px}#fd2 .cb.r{right:58px;width:92px}
+#fd2 .cb::after{content:'';position:absolute;top:0;left:-24px;width:24px;height:100%;background:#7dd3fc;box-shadow:0 0 8px #38bdf8}
+#fd2 .st.on .cb.l::after{animation:fdpl .9s linear infinite}#fd2 .st.on .cb.r::after{animation:fdpr .9s linear infinite}
+@keyframes fdpl{to{left:100%}}@keyframes fdpr{from{left:100%}to{left:-24px}}
+#fd2 .conf{height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin:5px 0}
+#fd2 .conf i{display:block;height:100%;width:0;background:linear-gradient(90deg,#fbbf24,#22c55e);border-radius:3px;transition:width 1.6s .5s}
+#fd2 .st.on .conf i{width:92%}
+#fd2 .btnG{position:absolute;right:46px;bottom:48px;width:34px;height:34px;border-radius:50%;background:#64748b;border:3px solid #cbd5e1;display:grid;place-items:center;color:#fff;font-weight:900;z-index:3}
+#fd2 .st.on .btnG{animation:fdap 3s forwards}
+@keyframes fdap{0%,55%{background:#64748b}62%{transform:scale(.8)}72%,100%{transform:scale(1.1);background:#16a34a;box-shadow:0 0 24px #22c55e;border-color:#86efac}}
+#fd2 .stamp{position:absolute;right:6px;bottom:150px;padding:4px 9px;border:2px solid #22c55e;border-radius:6px;color:#4ade80;font:900 12px system-ui,sans-serif;letter-spacing:.1em;opacity:0;transform:rotate(-8deg) scale(2.2);background:rgba(5,46,22,.7);z-index:4}
+#fd2 .st.on .stamp{animation:fdstp .45s 2.2s forwards}
+@keyframes fdstp{to{opacity:1;transform:rotate(-8deg) scale(1)}}
+#fd2 .chain{position:absolute;left:50%;bottom:232px;display:flex;gap:6px;transform:translateX(-50%)}
+#fd2 .chain i{width:24px;height:24px;border-radius:7px;border:1px solid #4ade80;background:rgba(34,197,94,.08);display:grid;place-items:center;font-size:11px;font-style:normal;opacity:.35}
+#fd2 .st.on .chain i{animation:fdlit .4s forwards}
+@keyframes fdlit{to{opacity:1;background:rgba(34,197,94,.45);box-shadow:0 0 12px #22c55e}}
+#fd2 .bars{display:flex;align-items:flex-end;gap:5px;height:50px;margin:4px 0 6px;border-bottom:1px solid rgba(255,255,255,.3)}
+#fd2 .bars i{flex:1;height:8%;border-radius:3px 3px 0 0;background:linear-gradient(#7dd3fc,#7c3aed);transition:height 1.2s cubic-bezier(.2,.9,.3,1.2)}
+#fd2 .st.on .bars i{height:var(--h)}
+#fd2 .cf{position:absolute;top:-30px;width:6px;height:10px;border-radius:1px;opacity:0}
+#fd2 .st.on .cf{animation:fdcf 2.8s linear infinite}
+@keyframes fdcf{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(300px) rotate(540deg)}}
+#fd2 .vg{position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55))}
+#fd2 .spd{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 120px,rgba(186,230,253,.07) 120px 122px);transition:opacity .4s}
+#fd2 .vp.moving .spd{opacity:1;animation:fdsl .45s linear infinite}
+@keyframes fdsl{to{background-position:-122px 0}}
+#fd2 .lb{position:absolute;left:0;right:0;height:14px;background:#000;z-index:8;transition:height .6s ease}
+#fd2 .lb.t{top:0}#fd2 .lb.bt{bottom:0}#fd2 .vp.moving .lb{height:30px}
+#fd2 .l3{position:absolute;left:18px;top:26px;z-index:9;max-width:62%;opacity:0;transform:translateX(-16px);transition:opacity .6s,transform .6s;padding-left:10px;border-left:3px solid #38bdf8}
+#fd2 .l3.show{opacity:1;transform:none}
+#fd2 .l3 small{color:#7dd3fc;font-size:10px;letter-spacing:.16em;font-weight:800;text-transform:uppercase}
+#fd2 .l3 h2{margin:3px 0 0;font-size:clamp(17px,2.8vw,26px);line-height:1.1;text-shadow:0 2px 12px #000}
+#fd2 .rec{position:absolute;right:16px;top:28px;z-index:9;font:700 10px ui-monospace,monospace;color:#fecaca;letter-spacing:.12em}
+#fd2 .rec i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ef4444;margin-right:6px;animation:fdbl 1s steps(2) infinite}
+@keyframes fdbl{50%{opacity:.15}}
+#fd2 .dw{position:absolute;left:0;bottom:14px;height:3px;width:0;background:#fbbf24;z-index:9;box-shadow:0 0 8px #fbbf24}
+#fd2 .dw.run{animation:fddw var(--dwell) linear forwards}
+@keyframes fddw{to{width:100%}}
+#fd2 .tl{display:flex;gap:2px;padding:12px 10px;background:#081025;border-top:1px solid var(--line)}
+#fd2 .tb{flex:1;min-width:0;background:none;border:0;color:var(--mut);cursor:pointer;padding:4px 2px;font-size:10.5px;text-align:center;border-radius:8px}
+#fd2 .tb .d{display:grid;place-items:center;margin:0 auto 5px;width:26px;height:26px;border-radius:50%;border:2px solid rgba(125,211,252,.35);font-weight:800;font-size:11px;background:#0b1530;color:#cbd5e1;transition:all .4s}
+#fd2 .tb.done .d{background:#0e7490;border-color:#38bdf8;color:#fff}
+#fd2 .tb.act .d{background:linear-gradient(135deg,#0ea5e9,#8b5cf6);border-color:#fff;color:#fff;box-shadow:0 0 14px #38bdf8;transform:scale(1.15)}
+#fd2 .tb.act{color:var(--ink);font-weight:700}
+#fd2 .lbl{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#fd2 .inf{padding:16px 18px 20px;background:#071022;transition:opacity .35s}
+#fd2 .inf.fade{opacity:.15}
+#fd2 .inf .k{font-size:10.5px;font-weight:800;color:#7dd3fc;letter-spacing:.14em}
+#fd2 .inf h3{margin:4px 0 0;font-size:18px}
+#fd2 .sum{color:var(--mut);font-size:13px;line-height:1.55;margin:6px 0 14px}
+#fd2 .cols{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px}
+#fd2 .col{background:rgba(15,25,50,.7);border:1px solid rgba(125,211,252,.15);border-radius:12px;padding:12px}
+#fd2 .col h4{margin:0 0 8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8}
+#fd2 .col ol{margin:0;padding-left:18px;font-size:12.5px;line-height:1.55}
+#fd2 .chips{display:flex;flex-wrap:wrap;gap:6px}
+#fd2 .chip{font-size:11px;padding:5px 9px;border-radius:999px;border:1px solid rgba(125,211,252,.35);background:rgba(14,116,144,.18)}
+#fd2 .tip{font-size:12.5px;line-height:1.5}
+@media(max-width:760px){#fd2 .cols{grid-template-columns:1fr}#fd2 .vp{height:400px}#fd2 .set{transform:translateX(-50%) scale(.78)}#fd2 .agent{transform:scale(1.15)}}
+@media(max-width:520px){#fd2 .lbl{display:none}#fd2 .l3{max-width:72%}#fd2 .hdr h1{font-size:14px}}
+@media(prefers-color-scheme:light){#fd2{--ink:#0f172a;--mut:#475569;background:#f8fafc}#fd2 .hdr{background:linear-gradient(90deg,#e0f2fe,#ede9fe)}#fd2 .b{background:#fff}#fd2 .tl,#fd2 .inf{background:#f8fafc}#fd2 .col{background:#fff;border-color:#cbd5e1}#fd2 .tb .d{background:#fff;color:#334155}#fd2 .inf .k{color:#0369a1}#fd2 .chip{background:#e0f2fe;border-color:#7dd3fc}}
+@media(prefers-reduced-motion:reduce){#fd2 .stars,#fd2 .spd,#fd2 .fig,#fd2 .holo::after,#fd2 .cf{animation:none!important}}
+</style>
+<div class='hdr'><div><h1>Do documento à decisão</h1><p>Um agente no Microsoft Foundry percorrendo o processo de ponta a ponta</p></div><div class='ctl'><button type='button' class='b' id='bR' aria-label='Reiniciar'>⟲</button><button type='button' class='b' id='bPv' aria-label='Etapa anterior'>◀</button><button type='button' class='b pri' id='bPl'>❚❚ Pausar</button><button type='button' class='b' id='bN' aria-label='Próxima etapa'>▶</button><a class='b dl' href='./index.html' download='foundry-demo.html' aria-label='Baixar esta página em HTML'>⬇ Baixar</a></div></div>
+<div class='vp' id='vp' role='img' aria-label='Animação contínua da jornada do agente'>
+<div class='stars'></div><div class='par' id='par'></div>
+<div class='cam' id='cam'><div class='world' id='world'><div class='floor'></div><div class='track'><div class='fill' id='fill'></div></div><div id='sts'></div><div class='agent' id='ag'></div></div></div>
+<div class='vg'></div><div class='spd'></div><div class='lb t'></div><div class='lb bt'></div>
+<div class='l3' id='l3'><small id='l3k'></small><h2 id='l3t'></h2></div>
+<div class='rec'><i></i><span id='rec'>CAM 01</span></div>
+<div class='dw' id='dw'></div>
+</div>
+<div class='tl' id='tl'></div>
+<div class='inf' id='inf' aria-live='polite'><span class='k' id='ik'></span><h3 id='it'></h3><p class='sum' id='is'></p><div class='cols'><div class='col'><h4>O que acontece</h4><ol id='ia'></ol></div><div class='col'><h4>Componentes</h4><div class='chips' id='ic'></div></div><div class='col'><h4>Dica para apresentar</h4><div class='tip' id='ip'></div></div></div></div>
+<script>
+(()=>{
+const R=document.getElementById('fd2');const q=s=>R.querySelector(s);
+const S=[
+{n:'Entrada',k:'Entrada multicanal',t:'Uma solicitação entra em cena',sum:'Cliente, fornecedor ou colaborador envia o pedido com anexos. O agente abre um caso e preserva todo o contexto.',act:[['Receber','mensagem, anexos e metadados do canal'],['Classificar','intenção, entidade e urgência'],['Abrir caso','identificador único e histórico inicial']],comp:['Foundry Agent Service','Azure OpenAI','Canal Web / Teams','Microsoft Entra ID'],tip:'Atendimento é a porta de entrada. O valor está no processo que vem depois.',tok:'✉️',c:'#38bdf8'},
+{n:'Planejamento',k:'Raciocínio',t:'O agente entende e monta o plano',sum:'O modelo interpreta o objetivo; o agente decompõe a tarefa e escolhe apenas ferramentas autorizadas.',act:[['Interpretar','objetivo, entidades e restrições'],['Planejar','sequência de passos e ferramentas'],['Proteger','identidade, instruções e limites de ação']],comp:['Foundry Agent Service','Azure OpenAI','Instruções do agente','Azure AI Content Safety'],tip:'Diferencie: o modelo raciocina; o agente orquestra estado, ferramentas e execução.',tok:'🧭',c:'#a78bfa'},
+{n:'Documentos',k:'Extração',t:'Documentos viram dados estruturados',sum:'PDFs, notas, contratos e formulários são classificados, e campos, tabelas e assinaturas são extraídos.',act:[['Classificar','tipo de cada documento'],['Extrair','campos, tabelas e assinaturas'],['Validar','ausências, divergências e baixa confiança']],comp:['Azure AI Document Intelligence','Azure Blob Storage','Azure Functions','Azure OpenAI'],tip:'Mostre ao vivo um campo ausente sendo sinalizado. Isso gera confiança na plateia.',tok:'📄',c:'#f472b6'},
+{n:'Conhecimento',k:'Grounding',t:'O agente encontra as regras certas',sum:'Políticas, manuais e contratos são recuperados com busca híbrida, respeitando permissões e versões.',act:[['Pesquisar','busca híbrida, semântica e vetorial'],['Filtrar','permissões, versão e vigência'],['Citar','evidências anexadas à resposta']],comp:['Azure AI Search','Foundry IQ','SharePoint / Blob','Microsoft Entra ID'],tip:'A IA não responde de memória: responde com evidência corporativa e citação.',tok:'📚',c:'#fbbf24'},
+{n:'Ferramentas',k:'Ação em sistemas',t:'Sistemas corporativos entram em ação',sum:'O agente consulta ERP, CRM, crédito e estoque por APIs governadas, sem expor credenciais.',act:[['Consultar','cadastro, status e histórico'],['Cruzar','sistemas, documentos e políticas'],['Preparar','ação proposta, ainda não executada']],comp:['Azure API Management','Azure Functions','Logic Apps','OpenAPI tools','Azure Key Vault'],tip:'API Management é a fachada segura: autenticação, limites de uso e logs.',tok:'🔌',c:'#34d399'},
+{n:'Aprovação',k:'Human-in-the-loop',t:'Recomendação com aprovação humana',sum:'O agente apresenta conclusão, confiança e evidências. Uma pessoa aprova, corrige ou rejeita.',act:[['Recomendar','decisão sugerida e justificativa'],['Explicar','evidências e divergências'],['Aprovar','o fluxo pausa até a decisão humana']],comp:['Foundry Agent Service','Logic Apps (aprovação)','Teams / Outlook','App de revisão'],tip:'Momento interativo: peça à plateia para votar em aprovar, corrigir ou rejeitar.',tok:'✅',c:'#22c55e'},
+{n:'Resultado',k:'Operação e melhoria',t:'Execução, auditoria e melhoria contínua',sum:'A ação aprovada é executada, tudo é registrado e as interações alimentam avaliações de qualidade e custo.',act:[['Executar','somente a ação aprovada'],['Registrar','trilha de auditoria completa'],['Avaliar','groundedness, latência, custo e resultado']],comp:['Foundry Tracing','Foundry Evaluations','Application Insights','Azure Monitor','Microsoft Purview'],tip:'Feche com o padrão reutilizável para indústria, saúde, finanças, agro e serviços.',tok:'📈',c:'#60a5fa'}];
+const DW=5600;R.style.setProperty('--dwell',DW+'ms');
+function inner(o){const rb=(o.c||'').indexOf('robot')>-1;return `<div class='fig ${o.c||''}' style='--t:${o.t||'#2563eb'};--l:${o.l||'#1e293b'};--h:${o.h||'#4a2c12'}'><i class='sh'></i><i class='lL'></i><i class='lR'></i><i class='hp'></i><i class='tr'></i><i class='aL'></i><i class='aR'></i><i class='sd'></i><i class='hd'></i>${rb?'':`<i class='hr'></i>`}</div>`}
+function fig(o){return `<div class='fw' style='${o.pos};transform:scale(${o.s||1})'>${inner(o)}</div>`}
+let seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
+const bc=['#ef4444','#3b82f6','#22c55e','#eab308','#a855f7','#f97316','#14b8a6','#e2e8f0'];
+function books(hit){let h='';for(let r=0;r<4;r++){h+=`<div class='row'>`;for(let b=0;b<6;b++){const x=hit&&r===1&&b===3;h+=`<span class='${x?'hit':''}' style='height:${55+Math.round(rnd()*40)}%;width:${6+Math.round(rnd()*3)}px;background:${bc[Math.floor(rnd()*bc.length)]}'></span>`}h+='</div>'}return h}
+const leds=`<span class='leds'><i></i><i></i><i></i></span>`;
+let cf='';for(let i=0;i<16;i++){cf+=`<b class='cf' style='left:${Math.round(rnd()*370)}px;background:${bc[i%bc.length]};animation-delay:${(rnd()*2.6).toFixed(2)}s'></b>`}
+let ch='';for(let i=0;i<5;i++){ch+=`<i style='animation-delay:${(.4+i*.3).toFixed(2)}s'>🔗</i>`}
+const T=[
+`${fig({pos:'left:10px;bottom:0',s:1.25,t:'#f97316',l:'#334155',h:'#3f2a14',c:'give'})}<div class='flydoc'></div><div class='desk' style='right:0;width:150px'></div><div class='holo' style='right:4px;bottom:60px;width:142px'><b>📨 Novo caso #4821</b><div class='seq'><div>Solicitante: Agro Sul</div><div>Anexos: 3 PDFs</div><div><span class='tag'>Prioridade alta</span></div></div></div>`,
+`<div class='orbit'><i style='top:-6px;left:54px'></i><i style='bottom:-6px;left:54px;background:#a78bfa;box-shadow:0 0 10px #a78bfa'></i><i style='left:-6px;top:54px;background:#34d399;box-shadow:0 0 10px #34d399'></i></div><div class='orb'></div><div class='holo' style='left:0;bottom:110px;width:128px'><b>🧭 Plano do agente</b><div class='seq'><div>1 · Ler anexos</div><div>2 · Buscar política</div><div>3 · Consultar ERP</div><div>4 · Recomendar</div></div></div><div class='holo' style='right:0;bottom:40px;width:128px'><b>🛡️ Guardrails</b><div class='seq'><div>Identidade do usuário</div><div>Ferramentas permitidas</div><div>Limites de ação</div></div></div>`,
+`<div class='scn'><i></i></div><div class='pp'></div><div class='pp' style='animation-delay:.8s'></div><div class='pp' style='animation-delay:1.6s'></div><div class='laser'></div><div class='holo' style='right:0;bottom:70px;width:148px'><b>🧾 Campos extraídos</b><div class='seq'><div>Razão social ✔</div><div>CNPJ ✔</div><div>Valor R$ 48.200 ✔</div><div class='warn'>Assinatura ⚠ ausente</div></div></div>`,
+`<div class='shelf' style='left:0'>${books(true)}</div><div class='shelf' style='right:0'>${books(false)}</div><div class='beam'></div><div class='beam lf'></div><div class='holo' style='left:50%;margin-left:-72px;bottom:222px;width:144px'><b>📚 Evidência encontrada</b><div class='seq'><div>Política de Crédito v3 · §4.2</div><div>Relevância 0,94</div></div></div>`,
+`<div class='tw' style='left:0;height:130px'>ERP${leds}</div><div class='tw' style='left:66px;height:96px'>CRM${leds}</div><div class='tw' style='right:0;height:136px'>Crédito${leds}</div><div class='tw' style='right:66px;height:100px'>Estoque${leds}</div><div class='cb l'></div><div class='cb r'></div><div class='holo' style='left:50%;margin-left:-72px;bottom:212px;width:144px'><b>🔐 API Management</b><div class='seq'><div>OAuth · Managed Identity</div><div>Rate limit · Logs</div></div></div>`,
+`<div class='holo' style='left:0;bottom:80px;width:150px'><b>🤖 Recomendação</b><div>Aprovar com ressalva</div><div class='conf'><i></i></div><div class='seq'><div>Confiança 92%</div><div>3 evidências citadas</div></div></div>${fig({pos:'right:38px;bottom:20px',s:1.2,t:'#0f766e',l:'#1e293b',h:'#111827',c:'rev'})}<div class='desk' style='right:0;width:130px'></div><div class='btnG'>✓</div><div class='stamp'>APROVADO</div>`,
+`${fig({pos:'left:0;bottom:0',s:1.1,t:'#db2777',l:'#334155',h:'#78350f',c:'cheer'})}${fig({pos:'left:56px;bottom:0',s:1.1,t:'#f59e0b',l:'#1e3a8a',h:'#111827',c:'cheer'})}<div class='chain'>${ch}</div><div class='holo' style='right:0;bottom:60px;width:150px'><b>📈 Painel da operação</b><div class='bars'><i style='--h:35%'></i><i style='--h:55%;transition-delay:.15s'></i><i style='--h:48%;transition-delay:.3s'></i><i style='--h:78%;transition-delay:.45s'></i><i style='--h:95%;transition-delay:.6s'></i></div><div class='seq'><div>Tempo de ciclo ↓</div><div>Retrabalho ↓ · Automação ↑</div></div></div>${cf}`];
+const sts=q('#sts');
+S.forEach((s,i)=>{sts.insertAdjacentHTML('beforeend',`<div class='st' style='left:${(i*100/7).toFixed(4)}%;--c:${s.c}'><div class='glow'></div><div class='num'>0${i+1}</div><div class='pad'></div><div class='set'>${T[i]}</div></div>`)});
+let ph='';for(let i=0;i<46;i++){const w=30+Math.round(rnd()*50),h=60+Math.round(rnd()*150);ph+=`<div class='bld' style='left:${(i*100/46).toFixed(2)}%;width:${w}px;height:${h}px;opacity:${(.45+rnd()*.5).toFixed(2)}'></div>`}q('#par').innerHTML=ph;
+const ag=q('#ag');ag.innerHTML=`<div class='ring'></div><div class='flip'>${inner({c:'robot',t:'#e8eef7',l:'#94a3b8'})}</div><div class='tok' id='tok'></div>`;
+const tl=q('#tl');tl.innerHTML=S.map((s,i)=>`<button type='button' class='tb' data-i='${i}' aria-label='Etapa ${i+1}: ${s.n}'><span class='d'>${i+1}</span><span class='lbl'>${s.n}</span></button>`).join('');
+const stEls=[...R.querySelectorAll('.st')],tbs=[...R.querySelectorAll('.tb')];
+const world=q('#world'),par=q('#par'),cam=q('#cam'),vp=q('#vp'),fill=q('#fill'),l3=q('#l3'),inf=q('#inf'),dw=q('#dw'),tok=q('#tok'),figA=ag.querySelector('.fig'),bPl=q('#bPl');
+let cur=-1,playing=true,moving=false,arrT=0,nextT=0,midT=0;
+function info(n){const s=S[n];q('#ik').textContent=`ETAPA ${n+1} / ${S.length} · ${s.k.toUpperCase()}`;q('#it').textContent=s.t;q('#is').textContent=s.sum;q('#ia').innerHTML=s.act.map(a=>`<li><b>${a[0]}:</b> ${a[1]}</li>`).join('');q('#ic').innerHTML=s.comp.map(c=>`<span class='chip'>${c}</span>`).join('');q('#ip').textContent=s.tip;tok.textContent=s.tok;inf.classList.remove('fade')}
+function go(n){n=(n+S.length)%S.length;if(n===cur)return;clearTimeout(arrT);clearTimeout(nextT);clearTimeout(midT);
+const first=cur<0;const d=first?0:Math.abs(n-cur);const dur=first?.05:Math.min(1.4+.35*d,3.4);
+R.style.setProperty('--dur',dur+'s');
+if(!first){ag.classList.toggle('left',n<cur);figA.classList.add('walk');vp.classList.add('moving');cam.classList.remove('dolly');void cam.offsetWidth;cam.classList.add('dolly');moving=true}
+stEls.forEach(e=>e.classList.remove('on'));l3.classList.remove('show');inf.classList.add('fade');dw.classList.remove('run');
+world.style.transform=`translateX(${-n*100/7}%)`;par.style.transform=`translateX(${-(n/6)*(200/3)}%)`;
+const p=((n+.5)/7*100)+'%';ag.style.left=p;fill.style.width=p;
+tbs.forEach((b,i)=>{b.classList.toggle('act',i===n);b.classList.toggle('done',i<n)});
+q('#rec').textContent='CAM 0'+(n+1);
+cur=n;midT=setTimeout(()=>info(n),dur*500);arrT=setTimeout(arrive,dur*1000)}
+function arrive(){moving=false;figA.classList.remove('walk');vp.classList.remove('moving');ag.classList.remove('left');const s=S[cur];stEls[cur].classList.add('on');q('#l3k').textContent=`Etapa ${cur+1} de ${S.length} · ${s.k}`;q('#l3t').textContent=s.t;l3.classList.add('show');if(playing)sched()}
+function sched(){clearTimeout(nextT);dw.classList.remove('run');void dw.offsetWidth;dw.classList.add('run');nextT=setTimeout(()=>go(cur+1),DW)}
+bPl.addEventListener('click',()=>{playing=!playing;bPl.textContent=playing?'❚❚ Pausar':'▶ Reproduzir';if(playing){if(!moving)sched()}else{clearTimeout(nextT);dw.classList.remove('run')}});
+q('#bN').addEventListener('click',()=>go(cur+1));q('#bPv').addEventListener('click',()=>go(cur-1));q('#bR').addEventListener('click',()=>go(0));
+tl.addEventListener('click',e=>{const b=e.target.closest('.tb');if(b)go(+b.dataset.i)});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}else if(e.key===' '){e.preventDefault();bPl.click()}});
+go(0);
+})();
+</script>
+</div>
+<div class="foot">Use ← → para navegar e espaço para pausar · <a href="./index.html" download="foundry-demo.html" style="color:#38bdf8">Baixar esta demo (HTML)</a> · Demo ilustrativa: valores exibidos são fictícios</div>
+</div>
+</body>
+</html>
